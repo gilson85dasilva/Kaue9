@@ -1916,9 +1916,9 @@ footer small {
     }
 
     .swiper-slide:not(.swiper-slide-active) {
-        transform: scale(0.95);
-        opacity: 0.85;
-        filter: brightness(0.75) saturate(0.85);
+        transform: scale(0.98);
+        opacity: 0.98;
+        filter: none;
     }
 
     .gallerySwiper {
@@ -1930,6 +1930,11 @@ footer small {
 
     .slide-overlay {
         padding: 16px;
+    }
+
+    .slide-overlay::after {
+        display: none;
+        animation: none;
     }
 
     .slide-overlay-tag {
@@ -2361,9 +2366,9 @@ footer small {
     }
 
     .swiper-slide:not(.swiper-slide-active) {
-        transform: scale(0.96);
-        opacity: 0.9;
-        filter: brightness(0.85) saturate(0.9);
+        transform: scale(0.99);
+        opacity: 1;
+        filter: none;
     }
 
     .gallerySwiper {
@@ -2375,6 +2380,11 @@ footer small {
 
     .slide-overlay {
         padding: 12px;
+    }
+
+    .slide-overlay::after {
+        display: none;
+        animation: none;
     }
 
     .slide-overlay-tag {
@@ -2606,6 +2616,11 @@ footer small {
 
     .slide-overlay {
         padding: 9px;
+    }
+
+    .slide-overlay::after {
+        display: none;
+        animation: none;
     }
 
     .slide-overlay-number {
