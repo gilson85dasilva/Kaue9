@@ -1649,6 +1649,10 @@ footer small {
         padding: 60px 14px;
     }
 
+    .event-section {
+        margin-top: 0;
+    }
+
     .countdown-section,
     .highlight-section {
         padding: 50px 14px;
@@ -1737,12 +1741,14 @@ footer small {
     /* HERO MOBILE */
 
     .hero {
-        padding-bottom: 12vh;
-        min-height: 85vh;
+        min-height: auto;
+        padding: 110px 0 36px;
+        flex-direction: column;
+        align-items: center;
     }
 
     .hero-content {
-        margin: 50px auto 0;
+        margin: 0 auto;
         text-align: center;
     }
 
@@ -1790,6 +1796,8 @@ footer small {
 
     .info-item strong {
         font-size: 16px;
+        line-height: 1;
+        overflow-wrap: anywhere;
     }
 
     .info-item span {
@@ -1798,6 +1806,7 @@ footer small {
 
     .info-item small {
         font-size: 6px;
+        overflow-wrap: anywhere;
     }
 
     .season-tag {
@@ -1813,6 +1822,16 @@ footer small {
         margin-top: 18px;
         font-size: 9px;
         letter-spacing: 5px;
+    }
+
+    .hero-bottom {
+        position: relative;
+        left: auto;
+        bottom: auto;
+        transform: none;
+        width: min(1100px, calc(100% - 16px));
+        margin: 28px auto 0;
+        align-self: center;
     }
 
 
@@ -2109,6 +2128,10 @@ footer small {
     .event-section,
     .gallery-section {
         padding: 40px 12px;
+    }
+
+    .event-section {
+        margin-top: 0;
     }
 
     .countdown-section,
