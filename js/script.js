@@ -677,6 +677,9 @@ if (
 
 } else {
 
+const isCompactCarousel =
+    window.innerWidth <= 768;
+
 const swiper =
     new Swiper(
         ".gallerySwiper",
@@ -684,7 +687,9 @@ const swiper =
 
             loop: true,
 
-            effect: "coverflow",
+            effect: isCompactCarousel
+                ? "slide"
+                : "coverflow",
 
             grabCursor: true,
 
@@ -692,23 +697,29 @@ const swiper =
 
             centeredSlides: true,
 
-            slidesPerView: "auto",
+            slidesPerView: isCompactCarousel
+                ? 1.08
+                : "auto",
 
-            spaceBetween: 20,
+            spaceBetween: isCompactCarousel
+                ? 10
+                : 20,
 
-            coverflowEffect: {
+            coverflowEffect: isCompactCarousel
+                ? undefined
+                : {
 
-                rotate: 10,
+                    rotate: 10,
 
-                stretch: 0,
+                    stretch: 0,
 
-                depth: 180,
+                    depth: 180,
 
-                modifier: 1.2,
+                    modifier: 1.2,
 
-                slideShadows: false
+                    slideShadows: false
 
-            },
+                },
 
             autoplay: {
 

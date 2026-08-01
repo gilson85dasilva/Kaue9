@@ -1355,21 +1355,29 @@ footer small {
     }
 
     .swiper-slide:not(.swiper-slide-active) {
-        transform: scale(0.94);
-        opacity: 0.8;
-        filter: brightness(0.7) saturate(0.8);
+        transform: scale(0.99);
+        opacity: 1;
+        filter: none;
     }
 
     .gallerySwiper {
         max-width: 480px;
         padding: 30px 0 70px;
-        perspective: 700px;
+        perspective: none;
     }
 
 
     .slide-overlay {
         opacity: 1;
         padding: 18px;
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+        background: linear-gradient(
+            0deg,
+            rgba(0,0,0,.82) 0%,
+            rgba(0,0,0,.35) 35%,
+            transparent 72%
+        );
     }
 
     .slide-overlay-number {
@@ -1916,8 +1924,8 @@ footer small {
     }
 
     .swiper-slide:not(.swiper-slide-active) {
-        transform: scale(0.98);
-        opacity: 0.98;
+        transform: scale(1);
+        opacity: 1;
         filter: none;
     }
 
@@ -1925,11 +1933,19 @@ footer small {
         width: min(100%, 560px);
         padding: 24px 0 58px;
         overflow: hidden;
-        perspective: 650px;
+        perspective: none;
     }
 
     .slide-overlay {
         padding: 16px;
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+        background: linear-gradient(
+            0deg,
+            rgba(0,0,0,.82) 0%,
+            rgba(0,0,0,.35) 35%,
+            transparent 72%
+        );
     }
 
     .slide-overlay::after {
@@ -2366,7 +2382,7 @@ footer small {
     }
 
     .swiper-slide:not(.swiper-slide-active) {
-        transform: scale(0.99);
+        transform: scale(1);
         opacity: 1;
         filter: none;
     }
@@ -2375,11 +2391,19 @@ footer small {
         width: min(100%, 520px);
         padding: 18px 0 44px;
         overflow: hidden;
-        perspective: 380px;
+        perspective: none;
     }
 
     .slide-overlay {
         padding: 12px;
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+        background: linear-gradient(
+            0deg,
+            rgba(0,0,0,.82) 0%,
+            rgba(0,0,0,.35) 35%,
+            transparent 72%
+        );
     }
 
     .slide-overlay::after {
@@ -2607,7 +2631,7 @@ footer small {
         width: min(100%, 440px);
         padding: 14px 0 40px;
         overflow: hidden;
-        perspective: 340px;
+        perspective: none;
     }
 
     .swiper-slide {
@@ -2616,6 +2640,14 @@ footer small {
 
     .slide-overlay {
         padding: 9px;
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+        background: linear-gradient(
+            0deg,
+            rgba(0,0,0,.82) 0%,
+            rgba(0,0,0,.35) 35%,
+            transparent 72%
+        );
     }
 
     .slide-overlay::after {
