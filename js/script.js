@@ -70,38 +70,110 @@ const navMenu =
     );
 
 
-menuToggle.addEventListener(
-    "click",
-    () => {
+if (
+    menuToggle &&
+    navMenu
+) {
 
-        navMenu.classList.toggle(
-            "active"
+    const menuIcon =
+        menuToggle.querySelector(
+            "i"
         );
 
-        const icon =
-            menuToggle.querySelector(
-                "i"
-            );
 
+    function setMenuState(isOpen) {
 
-        if (
-            navMenu.classList.contains(
-                "active"
-            )
-        ) {
+        navMenu.classList.toggle(
+            "active",
+            isOpen
+        );
 
-            icon.className =
-                "fa-solid fa-xmark";
+        document.body.classList.toggle(
+            "menu-open",
+            isOpen
+        );
 
-        } else {
+        menuToggle.setAttribute(
+            "aria-expanded",
+            String(isOpen)
+        );
 
-            icon.className =
-                "fa-solid fa-bars";
-
-        }
+        menuIcon.className =
+            isOpen
+                ? "fa-solid fa-xmark"
+                : "fa-solid fa-bars";
 
     }
-);
+
+
+    menuToggle.addEventListener(
+        "click",
+        () => {
+
+            setMenuState(
+                !navMenu.classList.contains(
+                    "active"
+                )
+            );
+
+        }
+    );
+
+
+    document.addEventListener(
+        "click",
+        event => {
+
+            if (
+                !navMenu.classList.contains(
+                    "active"
+                )
+            ) {
+
+                return;
+
+            }
+
+            const clickedInsideMenu =
+                navMenu.contains(
+                    event.target
+                );
+
+            const clickedToggle =
+                menuToggle.contains(
+                    event.target
+                );
+
+
+            if (
+                !clickedInsideMenu &&
+                !clickedToggle
+            ) {
+
+                setMenuState(false);
+
+            }
+
+        }
+    );
+
+
+    window.addEventListener(
+        "resize",
+        () => {
+
+            if (
+                window.innerWidth > 900
+            ) {
+
+                setMenuState(false);
+
+            }
+
+        }
+    );
+
+}
 
 
 
@@ -120,14 +192,30 @@ document
                 "click",
                 () => {
 
-                    navMenu.classList.remove(
-                        "active"
-                    );
+                    if (
+                        menuToggle &&
+                        navMenu
+                    ) {
 
-                    menuToggle
-                        .querySelector("i")
-                        .className =
-                        "fa-solid fa-bars";
+                        navMenu.classList.remove(
+                            "active"
+                        );
+
+                        document.body.classList.remove(
+                            "menu-open"
+                        );
+
+                        menuToggle
+                            .querySelector("i")
+                            .className =
+                            "fa-solid fa-bars";
+
+                        menuToggle.setAttribute(
+                            "aria-expanded",
+                            "false"
+                        );
+
+                    }
 
                 }
             );

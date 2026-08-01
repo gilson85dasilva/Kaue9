@@ -31,6 +31,12 @@ body {
     color: var(--white);
     font-family: "Inter", sans-serif;
     overflow-x: hidden;
+    -webkit-text-size-adjust: 100%;
+}
+
+
+body.menu-open {
+    overflow: hidden;
 }
 
 
@@ -43,12 +49,14 @@ a {
 button, input, select {
     font: inherit;
     cursor: pointer;
+    touch-action: manipulation;
 }
 
 
 img {
     max-width: 100%;
     display: block;
+    height: auto;
 }
 
 
@@ -274,7 +282,7 @@ img {
 .hero-content {
     position: relative;
     z-index: 5;
-    width: min(1100px, calc(100% - 40px));
+    width: min(1100px, calc(100% - 32px));
     margin: 80px auto 0;
 }
 
@@ -309,16 +317,18 @@ img {
 .hero h1 {
     margin-top: 5px;
     display: flex;
+    flex-wrap: wrap;
     align-items: baseline;
+    gap: 0 10px;
     font-family: "Bebas Neue";
     font-size: clamp(110px, 18vw, 220px);
     line-height: .7;
     letter-spacing: 2px;
+    text-wrap: balance;
 }
 
 
 .hero h1 strong {
-    margin-left: 15px;
     color: var(--orange);
     font-size: 1.2em;
     font-weight: 400;
@@ -339,6 +349,7 @@ img {
     color: rgba(255,255,255,.7);
     font-size: 12px;
     line-height: 1.8;
+    overflow-wrap: anywhere;
 }
 
 
@@ -367,7 +378,7 @@ img {
     left: 50%;
     bottom: 0;
     z-index: 10;
-    width: min(1100px, calc(100% - 40px));
+    width: min(1100px, calc(100% - 32px));
     transform: translateX(-50%);
 }
 
@@ -462,7 +473,7 @@ img {
 
 
 .section-container {
-    width: min(1100px, 100%);
+    width: min(1100px, calc(100% - 32px));
     margin: auto;
 }
 
@@ -503,6 +514,8 @@ img {
     color: rgba(255,255,255,.6);
     font-size: 12px;
     line-height: 1.8;
+    overflow-wrap: anywhere;
+    text-wrap: balance;
 }
 
 
@@ -513,6 +526,8 @@ img {
     font-size: 12px;
     line-height: 1.8;
     text-align: center;
+    overflow-wrap: anywhere;
+    text-wrap: balance;
 }
 
 
@@ -643,6 +658,7 @@ img {
     display: flex;
     justify-content: center;
     gap: 25px;
+    flex-wrap: wrap;
 }
 
 
@@ -1197,7 +1213,7 @@ footer small {
         position: fixed;
         top: 80px;
         right: 20px;
-        width: 260px;
+        width: min(320px, calc(100vw - 20px));
         flex-direction: column;
         align-items: stretch;
         gap: 4px;
@@ -1210,6 +1226,9 @@ footer small {
         opacity: 0;
         pointer-events: none;
         transition: .4s;
+        max-height: calc(100vh - 100px);
+        overflow-y: auto;
+        overscroll-behavior: contain;
     }
 
 
@@ -1485,7 +1504,7 @@ footer small {
     .nav-menu {
         top: 64px;
         right: 10px;
-        width: 220px;
+        width: min(280px, calc(100vw - 20px));
     }
 
     .nav-menu a {
@@ -1551,11 +1570,15 @@ footer small {
     /* COUNTDOWN SMALL TABLET */
 
     .countdown {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 12px;
+        width: min(520px, 100%);
+        margin-inline: auto;
     }
 
     .countdown-item {
-        width: calc(50% - 12px);
+        width: 100%;
         padding: 16px 8px;
     }
 
@@ -1700,7 +1723,8 @@ footer small {
     .nav-menu {
         top: 56px;
         right: 8px;
-        width: 200px;
+        width: calc(100vw - 16px);
+        max-width: none;
         padding: 10px;
     }
 
@@ -1719,24 +1743,31 @@ footer small {
 
     .hero-content {
         margin: 50px auto 0;
+        text-align: center;
     }
 
     .hero h1 {
         font-size: clamp(60px, 14vw, 100px);
+        gap: 0 6px;
+        line-height: .82;
+        justify-content: center;
+        margin-inline: auto;
     }
 
     .hero h1 strong {
-        margin-left: 10px;
+        margin-left: 0;
     }
 
     .hero-subtitle {
         margin-top: 20px;
         font-size: clamp(18px, 5vw, 28px);
         letter-spacing: 3px;
+        text-shadow: 0 8px 24px rgba(0,0,0,.45);
     }
 
     .hero-description {
-        max-width: 100%;
+        max-width: 520px;
+        margin-inline: auto;
         font-size: 10px;
         line-height: 1.6;
     }
@@ -1746,6 +1777,9 @@ footer small {
         padding: 12px 16px;
         font-size: 7px;
         gap: 10px;
+        width: min(260px, 100%);
+        justify-content: center;
+        margin-inline: auto;
     }
 
     .hero-info {
@@ -1821,17 +1855,22 @@ footer small {
 
     .countdown {
         margin-top: 30px;
+        grid-template-columns: 1fr;
         gap: 10px;
+        width: min(320px, 100%);
     }
 
     .countdown-item {
         width: 100%;
-        padding: 14px 10px;
-        border-radius: 12px;
+        padding: 16px 12px;
+        border-radius: 14px;
+        background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.025));
+        box-shadow: 0 10px 30px rgba(0,0,0,.18);
     }
 
     .countdown-item strong {
-        font-size: 32px;
+        font-size: 34px;
+        text-shadow: 0 0 18px rgba(255,106,0,.22);
     }
 
     .countdown-item span {
@@ -1848,11 +1887,11 @@ footer small {
     /* GALLERY MOBILE */
 
     .swiper-slide img {
-        height: clamp(220px, 50vw, 300px);
+        height: clamp(240px, 58vw, 320px);
     }
 
     .swiper-slide {
-        border-radius: 24px;
+        border-radius: 26px;
     }
 
     .swiper-slide:not(.swiper-slide-active) {
@@ -1862,48 +1901,49 @@ footer small {
     }
 
     .gallerySwiper {
-        padding: 20px 0 55px;
-        perspective: 500px;
+        width: min(620px, calc(100vw - 24px));
+        padding: 24px 0 58px;
+        perspective: 650px;
     }
 
     .slide-overlay {
-        padding: 14px;
+        padding: 16px;
     }
 
     .slide-overlay-tag {
-        font-size: 7px;
+        font-size: 8px;
         letter-spacing: 2px;
     }
 
     .slide-overlay-number {
-        font-size: 24px;
+        font-size: 26px;
     }
 
     .slide-overlay-icon {
-        font-size: 22px;
+        font-size: 24px;
     }
 
     .swiper-pagination {
-        bottom: 8px !important;
+        bottom: 6px !important;
     }
 
     .swiper-pagination-fraction {
-        padding: 5px 14px;
-        font-size: 15px;
-        gap: 8px;
+        padding: 6px 16px;
+        font-size: 16px;
+        gap: 10px;
     }
 
     .swiper-pagination-current {
-        font-size: 18px;
+        font-size: 20px;
     }
 
     .swiper-pagination-total {
-        font-size: 13px;
+        font-size: 14px;
     }
 
     .gallery-section::before {
-        width: 400px;
-        height: 400px;
+        width: 360px;
+        height: 360px;
     }
 
 
@@ -1960,6 +2000,102 @@ footer small {
     .footer-ball {
         font-size: 28px;
         margin-bottom: 10px;
+    }
+
+}
+
+
+@media (max-width: 430px) {
+
+
+    /* HERO COMPACT */
+
+    .hero {
+        padding-bottom: 10vh;
+        min-height: 82vh;
+    }
+
+    .hero-content {
+        margin: 44px auto 0;
+    }
+
+    .hero h1 {
+        font-size: clamp(52px, 15vw, 84px);
+        gap: 0 4px;
+    }
+
+    .hero-subtitle {
+        margin-top: 18px;
+        font-size: clamp(17px, 4.6vw, 24px);
+        letter-spacing: 2px;
+    }
+
+    .hero-description {
+        max-width: 460px;
+        font-size: 9px;
+        line-height: 1.55;
+    }
+
+    .hero-button {
+        margin-top: 18px;
+        width: min(228px, 100%);
+        padding: 11px 13px;
+    }
+
+
+    /* COUNTDOWN COMPACT */
+
+    .countdown {
+        margin-top: 26px;
+        width: min(292px, 100%);
+        gap: 9px;
+    }
+
+    .countdown-item {
+        padding: 14px 10px;
+    }
+
+    .countdown-item strong {
+        font-size: 30px;
+    }
+
+    .countdown-item span {
+        font-size: 6px;
+    }
+
+
+    /* GALLERY COMPACT */
+
+    .swiper-slide img {
+        height: clamp(216px, 56vw, 286px);
+    }
+
+    .gallerySwiper {
+        width: min(600px, calc(100vw - 16px));
+        padding: 20px 0 48px;
+    }
+
+    .slide-overlay {
+        padding: 14px;
+    }
+
+    .slide-overlay-number {
+        font-size: 24px;
+    }
+
+    .slide-overlay-icon {
+        font-size: 22px;
+    }
+
+    .swiper-pagination-fraction {
+        padding: 5px 14px;
+        font-size: 14px;
+        gap: 8px;
+    }
+
+    .gallery-section::before {
+        width: 300px;
+        height: 300px;
     }
 
 }
@@ -2044,7 +2180,7 @@ footer small {
     .nav-menu {
         top: 48px;
         right: 6px;
-        width: 180px;
+        width: calc(100vw - 12px);
         padding: 8px;
         border-radius: 12px;
     }
@@ -2069,10 +2205,12 @@ footer small {
 
     .hero h1 {
         font-size: clamp(44px, 15vw, 70px);
+        gap: 0 4px;
+        line-height: .84;
     }
 
     .hero h1 strong {
-        margin-left: 6px;
+        margin-left: 0;
     }
 
     .hero-subtitle {
@@ -2092,6 +2230,8 @@ footer small {
         font-size: 6px;
         gap: 8px;
         border-radius: 8px;
+        width: min(240px, 100%);
+        justify-content: center;
     }
 
     .hero-info {
@@ -2163,12 +2303,14 @@ footer small {
     }
 
     .countdown-item {
-        padding: 12px 8px;
-        border-radius: 10px;
+        padding: 14px 10px;
+        border-radius: 12px;
+        background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+        box-shadow: 0 8px 24px rgba(0,0,0,.16);
     }
 
     .countdown-item strong {
-        font-size: 26px;
+        font-size: 28px;
     }
 
     .countdown-item span {
@@ -2184,11 +2326,11 @@ footer small {
     /* GALLERY XSMALL */
 
     .swiper-slide img {
-        height: 200px;
+        height: 220px;
     }
 
     .swiper-slide {
-        border-radius: 22px;
+        border-radius: 20px;
     }
 
     .swiper-slide:not(.swiper-slide-active) {
@@ -2198,8 +2340,9 @@ footer small {
     }
 
     .gallerySwiper {
-        padding: 16px 0 45px;
-        perspective: 400px;
+        width: min(600px, calc(100vw - 18px));
+        padding: 18px 0 44px;
+        perspective: 380px;
     }
 
     .slide-overlay {
@@ -2212,11 +2355,11 @@ footer small {
     }
 
     .slide-overlay-number {
-        font-size: 20px;
+        font-size: 22px;
     }
 
     .slide-overlay-icon {
-        font-size: 18px;
+        font-size: 20px;
     }
 
     .swiper-pagination {
@@ -2225,13 +2368,13 @@ footer small {
 
     .swiper-pagination-fraction {
         padding: 4px 12px;
-        font-size: 13px;
-        gap: 6px;
+        font-size: 14px;
+        gap: 8px;
     }
 
     .gallery-section::before {
-        width: 280px;
-        height: 280px;
+        width: 240px;
+        height: 240px;
     }
 
 
@@ -2286,6 +2429,177 @@ footer small {
     .footer-ball {
         font-size: 24px;
         margin-bottom: 8px;
+    }
+
+}
+
+
+@media (max-width: 340px) {
+
+
+    .header {
+        top: 5px;
+        width: calc(100% - 10px);
+    }
+
+    .navbar {
+        min-height: 42px;
+        padding: 4px 4px 4px 8px;
+        border-radius: 11px;
+    }
+
+    .logo-icon {
+        width: 26px;
+        height: 26px;
+        font-size: 13px;
+        border-radius: 7px;
+    }
+
+    .logo-text strong {
+        font-size: 14px;
+    }
+
+    .logo-text span {
+        font-size: 6px;
+        letter-spacing: 1px;
+    }
+
+    .music-button,
+    .menu-toggle {
+        height: 26px;
+        border-radius: 7px;
+    }
+
+    .music-button {
+        padding: 0 7px;
+        font-size: 7px;
+    }
+
+    .menu-toggle {
+        width: 26px;
+        font-size: 10px;
+    }
+
+    .nav-menu {
+        top: 44px;
+        right: 5px;
+        width: calc(100vw - 10px);
+        padding: 8px;
+    }
+
+    .nav-menu a {
+        padding: 8px 10px;
+        font-size: 10px;
+    }
+
+
+    .hero {
+        min-height: 78vh;
+        padding-bottom: 8vh;
+    }
+
+    .hero-content {
+        margin: 36px auto 0;
+    }
+
+    .hero h1 {
+        font-size: clamp(42px, 16vw, 60px);
+        gap: 0 3px;
+    }
+
+    .hero-subtitle {
+        margin-top: 14px;
+        font-size: clamp(14px, 4.8vw, 19px);
+    }
+
+    .hero-description {
+        font-size: 8px;
+        line-height: 1.5;
+        max-width: 100%;
+    }
+
+    .hero-button {
+        margin-top: 14px;
+        width: min(210px, 100%);
+        padding: 9px 12px;
+        font-size: 6px;
+    }
+
+    .hero-info {
+        padding: 12px 8px;
+        gap: 8px;
+    }
+
+    .info-item strong {
+        font-size: 13px;
+    }
+
+    .info-item span,
+    .info-item small {
+        font-size: 5px;
+        letter-spacing: 1px;
+    }
+
+
+    .countdown {
+        width: min(266px, 100%);
+        gap: 7px;
+    }
+
+    .countdown-item {
+        padding: 12px 8px;
+        border-radius: 10px;
+    }
+
+    .countdown-item strong {
+        font-size: 26px;
+    }
+
+    .countdown-item span {
+        font-size: 5px;
+    }
+
+
+    .swiper-slide img {
+        height: 192px;
+    }
+
+    .gallerySwiper {
+        width: min(600px, calc(100vw - 10px));
+        padding: 14px 0 40px;
+        perspective: 340px;
+    }
+
+    .swiper-slide {
+        border-radius: 18px;
+    }
+
+    .slide-overlay {
+        padding: 9px;
+    }
+
+    .slide-overlay-number {
+        font-size: 18px;
+    }
+
+    .slide-overlay-icon {
+        font-size: 17px;
+    }
+
+    .swiper-pagination-fraction {
+        padding: 4px 9px;
+        font-size: 11px;
+        gap: 5px;
+    }
+
+    .gallery-section::before {
+        width: 200px;
+        height: 200px;
+    }
+
+
+    .highlight-image {
+        height: 170px;
     }
 
 }
