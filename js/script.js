@@ -758,36 +758,36 @@ const swiper =
             breakpoints: {
 
                 768: {
-                    slidesPerView: 1.3,
-                    spaceBetween: 25,
+                    slidesPerView: 1.22,
+                    spaceBetween: 18,
                     coverflowEffect: {
                         rotate: 8,
                         stretch: 0,
-                        depth: 200,
+                        depth: 170,
                         modifier: 1.3,
                         slideShadows: false
                     }
                 },
 
                 480: {
-                    slidesPerView: 1.15,
-                    spaceBetween: 15,
+                    slidesPerView: 1.08,
+                    spaceBetween: 12,
                     coverflowEffect: {
                         rotate: 5,
                         stretch: 0,
-                        depth: 140,
+                        depth: 120,
                         modifier: 1.1,
                         slideShadows: false
                     }
                 },
 
                 360: {
-                    slidesPerView: 1.1,
-                    spaceBetween: 10,
+                    slidesPerView: 1,
+                    spaceBetween: 8,
                     coverflowEffect: {
                         rotate: 3,
                         stretch: 0,
-                        depth: 100,
+                        depth: 90,
                         modifier: 1,
                         slideShadows: false
                     }
@@ -795,11 +795,11 @@ const swiper =
 
                 0: {
                     slidesPerView: 1,
-                    spaceBetween: 8,
+                    spaceBetween: 6,
                     coverflowEffect: {
                         rotate: 0,
                         stretch: 0,
-                        depth: 80,
+                        depth: 70,
                         modifier: 0.9,
                         slideShadows: false
                     }
